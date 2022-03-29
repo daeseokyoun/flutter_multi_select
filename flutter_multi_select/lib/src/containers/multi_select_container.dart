@@ -147,6 +147,7 @@ class _SimpleMultiSelectContainerState<T>
       }
       return false;
     });
+    setState(() {});
   }
 
   void _addItem(T value, String label) {
