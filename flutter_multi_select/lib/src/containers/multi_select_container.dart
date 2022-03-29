@@ -107,6 +107,7 @@ class _SimpleMultiSelectContainerState<T>
       widget.controller!.selectAll = _selectAll;
       widget.controller!.addItem = _addItem;
       widget.controller!.deSelectItem = _deSelectItem;
+      widget.controller!.removeItems = _removeItems;
     }
     super.initState();
   }
@@ -153,6 +154,16 @@ class _SimpleMultiSelectContainerState<T>
   void _addItem(T value, String label) {
     MultiSelectCard<T> newItem = MultiSelectCard<T>(value: value, label: label);
     _items.add(newItem);
+    setState(() {});
+  }
+
+  void _removeItems(Set<T> values) {
+    _items.removeWhere((element) {
+      if (values.contains(element.value)) {
+        return true;
+      }
+      return false;
+    });
     setState(() {});
   }
 

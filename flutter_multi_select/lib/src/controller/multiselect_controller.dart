@@ -17,6 +17,9 @@ class MultiSelectController<T> {
   /// add new item on the fly
   late void Function(T value, String label) addItem;
 
+  /// remove item
+  late void Function(Set<T> values) removeItems;
+
   /// deselect single item
   late void Function(T value) deSelectItem;
 
