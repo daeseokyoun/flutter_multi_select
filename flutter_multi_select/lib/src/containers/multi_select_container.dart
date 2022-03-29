@@ -105,6 +105,8 @@ class _SimpleMultiSelectContainerState<T>
       widget.controller!.deselectAll = _deSelectAll;
       widget.controller!.getSelectedItems = _getValues;
       widget.controller!.selectAll = _selectAll;
+      widget.controller!.addItem = _addItem;
+      widget.controller!.deSelectItem = _deSelectItem;
     }
     super.initState();
   }
@@ -133,6 +135,23 @@ class _SimpleMultiSelectContainerState<T>
           ? true
           : !item.perpetualSelected;
     });
+    setState(() {});
+  }
+
+  void _deSelectItem(T value) {
+    _selectedItems.removeWhere((element) {
+      if (element.value == value) {
+        element.selected = false;
+
+        return true;
+      }
+      return false;
+    });
+  }
+
+  void _addItem(T value, String label) {
+    MultiSelectCard<T> newItem = MultiSelectCard<T>(value: value, label: label);
+    _items.add(newItem);
     setState(() {});
   }
 

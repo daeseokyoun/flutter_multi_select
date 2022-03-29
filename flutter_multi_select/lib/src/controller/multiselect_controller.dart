@@ -14,5 +14,11 @@ class MultiSelectController<T> {
   /// get all selected items
   late List<T> Function() getSelectedItems;
 
+  /// add new item on the fly
+  late void Function(T value, String label) addItem;
+
+  /// deselect single item
+  late void Function(T value) deSelectItem;
+
   MultiSelectController({this.deSelectPerpetualSelectedItems = false});
 }
